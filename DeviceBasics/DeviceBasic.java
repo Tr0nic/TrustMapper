@@ -11,4 +11,5 @@ package DeviceBasics;
  */
 abstract class DeviceBasic {
     public String devName;
+    public int maxConnector;
 }

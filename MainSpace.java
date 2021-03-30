@@ -1,6 +1,9 @@
 
+import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
-
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import WindowsDevices.WindowsServ;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,14 +15,21 @@ import java.awt.event.KeyEvent;
  * @author Shane
  */
 public class MainSpace extends javax.swing.JFrame {
-
+    javax.swing.JPopupMenu conMen = new javax.swing.JPopupMenu();
+    private int iWorkNum = 1;
+    
+    
     /**
      * Creates new form MainSpace
      */
     public MainSpace() {
         initComponents();
+        genConMen();
     }
-    private int iWorkNum = 1;
+    public void genConMen (){
+        javax.swing.JMenuItem genWinServ = new javax.swing.JMenuItem("Windows Server");
+        conMen.add(genWinServ);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,13 +39,8 @@ public class MainSpace extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button2 = new java.awt.Button();
         Workspace = new javax.swing.JTabbedPane();
         panel1 = new java.awt.Panel();
-        panel2 = new java.awt.Panel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jSplitPane3 = new javax.swing.JSplitPane();
         MainMenu = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
         New = new javax.swing.JMenuItem();
@@ -55,8 +60,6 @@ public class MainSpace extends javax.swing.JFrame {
         GenUbunC = new javax.swing.JMenuItem();
         GenRHELS = new javax.swing.JMenuItem();
 
-        button2.setLabel("button1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Workspace.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -65,43 +68,24 @@ public class MainSpace extends javax.swing.JFrame {
             }
         });
 
-        panel2.setBackground(new java.awt.Color(100, 100, 100));
-
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSplitPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(692, Short.MAX_VALUE))
-        );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                panel1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 929, Short.MAX_VALUE)
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGap(0, 234, Short.MAX_VALUE)
-                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 363, Short.MAX_VALUE)
         );
 
         Workspace.addTab("Workspace1", panel1);
@@ -203,6 +187,30 @@ public class MainSpace extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_WorkspaceKeyPressed
 
+    private void panel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseReleased
+        switch(evt.getButton()){
+            case 3:
+            conMen.setVisible(false);
+            System.out.println("Removing the menu");
+            break;
+        }
+    }//GEN-LAST:event_panel1MouseReleased
+
+    private void panel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MousePressed
+        System.out.println(evt.getButton());
+
+        switch(evt.getButton()){
+            case 3:
+
+            conMen.setVisible(true);
+            conMen.setLocation(evt.getXOnScreen(), evt.getYOnScreen());
+
+            System.out.println(evt.getX() + "," + evt.getY());
+            System.out.println("tried to make a menu");
+            break;
+        }
+    }//GEN-LAST:event_panel1MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -259,11 +267,6 @@ public class MainSpace extends javax.swing.JFrame {
     private javax.swing.JMenuItem SaveAs;
     private javax.swing.JMenu Windows;
     private javax.swing.JTabbedPane Workspace;
-    private java.awt.Button button2;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JSplitPane jSplitPane3;
     private java.awt.Panel panel1;
-    private java.awt.Panel panel2;
     // End of variables declaration//GEN-END:variables
 }

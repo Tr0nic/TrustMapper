@@ -21,7 +21,7 @@ public class WindowsServ implements ServerBasic {
     private String children[];
     private String accounts[];
     
-    private WindowsServ(){
+    public WindowsServ(){
         accounts[0] = "Administrator";
     }
     

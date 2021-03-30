@@ -9,6 +9,6 @@ package DeviceBasics;
  *
  * @author Shane
  */
-abstract class ServerBasic {
-    public abstract void services();
+public interface ServerBasic {
+    public abstract void services(String servNames[]);
 }
