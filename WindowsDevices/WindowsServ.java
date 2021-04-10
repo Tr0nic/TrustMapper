@@ -25,19 +25,19 @@ public class WindowsServ implements ServerBasic {
         accounts[0] = "Administrator";
     }
     
-    
+    @Override
     public void services(String serviceName[]){
-        for(int i = 0; i < serviceName.length; i++){
-            switch(serviceName[i]){
+        for (String serviceName1 : serviceName) {
+            switch (serviceName1) {
                 case "Active Directory":
                     domainServices = true;
                     canRegisterChildren = true;
                     break;
-                
                 case "IIS":
                     break;
+                case "File Server":
+                    break;
             }
-            
         }
     }
     

@@ -1,9 +1,12 @@
+package com.src;
+
 
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import WindowsDevices.WindowsServ;
+import java.awt.Cursor;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -132,6 +135,11 @@ public class MainSpace extends javax.swing.JFrame {
         Windows.add(GenWinS);
 
         GenWinC.setText("Generic Windows Client");
+        GenWinC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenWinCActionPerformed(evt);
+            }
+        });
         Windows.add(GenWinC);
 
         Devices.add(Windows);
@@ -210,6 +218,12 @@ public class MainSpace extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_panel1MousePressed
+
+    private void GenWinCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenWinCActionPerformed
+        System.out.println("Tried to make a windows client");
+        javax.swing.JButton createdWCli = new javax.swing.JButton("WinC1");
+        panel1.add(createdWCli);
+    }//GEN-LAST:event_GenWinCActionPerformed
 
     /**
      * @param args the command line arguments
