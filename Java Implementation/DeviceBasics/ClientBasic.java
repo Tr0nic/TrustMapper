@@ -9,7 +9,11 @@ package DeviceBasics;
  *
  * @author Shane
  */
-abstract class DeviceBasic {
-    public String devName;
-    public int maxConnector;
+public interface ClientBasic {
+    public enum Client_OS {
+        WIN_10,
+        WIN_7,
+        WIN_LEGACY,
+        UBUNTU
+    }
 }

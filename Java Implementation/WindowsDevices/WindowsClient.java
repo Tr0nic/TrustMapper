@@ -10,8 +10,10 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.*;
 import java.io.*;
 import javax.swing.JOptionPane;
-import javax.swing.JFrame;
 import com.src.MainSpace;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+
 /**
  *
  * @author Shane
@@ -23,7 +25,10 @@ public class WindowsClient {
     
     public MainSpace mainWin;
     
+    JPanel bckInter = new JPanel();
     public void WindowsClient(String usage) throws IOException, ParserConfigurationException, SAXException{
+        
+        
         switch(usage){
             case "Kiosk":
                 userType = 1;

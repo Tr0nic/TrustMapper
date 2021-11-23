@@ -1,12 +1,22 @@
 package com.src;
 
 
-import java.awt.MouseInfo;
+
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import WindowsDevices.WindowsServ;
-import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,13 +25,13 @@ import java.awt.Cursor;
 
 /**
  *
- * @author Shane
+ * @author Tronic
  */
 public class MainSpace extends javax.swing.JFrame {
     javax.swing.JPopupMenu conMen = new javax.swing.JPopupMenu();
     private int iWorkNum = 1;
-    
-    
+    private Image img = null;
+    private String image;
     /**
      * Creates new form MainSpace
      */
@@ -33,6 +43,7 @@ public class MainSpace extends javax.swing.JFrame {
         javax.swing.JMenuItem genWinServ = new javax.swing.JMenuItem("Windows Server");
         conMen.add(genWinServ);
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,6 +143,11 @@ public class MainSpace extends javax.swing.JFrame {
         Windows.setText("Windows");
 
         GenWinS.setText("Generic Windows Server");
+        GenWinS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GenWinSMouseClicked(evt);
+            }
+        });
         Windows.add(GenWinS);
 
         GenWinC.setText("Generic Windows Client");
@@ -220,10 +236,35 @@ public class MainSpace extends javax.swing.JFrame {
     }//GEN-LAST:event_panel1MousePressed
 
     private void GenWinCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenWinCActionPerformed
+        
         System.out.println("Tried to make a windows client");
-        javax.swing.JButton createdWCli = new javax.swing.JButton("WinC1");
-        panel1.add(createdWCli);
+        try{
+            URL url = this.getClass().getResource("images/genericWinC.jpg");
+            img = ImageIO.read(url);
+            System.out.println("Grabbed image");
+            ImageIcon newCliIco = new ImageIcon(image);
+            JButton newCli = new JButton("WinClient");
+            newCli.setIcon(newCliIco);
+            newCli.setBounds(0, 0, 100, 100);
+            
+            this.panel1.add(newCli);
+            newCli.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){}
+            });
+            newCli.setVisible(true);
+
+        } catch(IOException e){
+            System.out.println(e);
+        }
     }//GEN-LAST:event_GenWinCActionPerformed
+
+    private void GenWinSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenWinSMouseClicked
+        
+        
+        
+        
+    }//GEN-LAST:event_GenWinSMouseClicked
 
     /**
      * @param args the command line arguments

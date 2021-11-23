@@ -70,6 +70,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Generic Windows Server"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="GenWinSMouseClicked"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="GenWinC">
                   <Properties>

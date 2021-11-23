@@ -9,6 +9,11 @@ package DeviceBasics;
  *
  * @author Shane
  */
-public interface ServerBasic {
-    public abstract void services(String servNames[]);
+abstract class DeviceBasic {
+    public String devName;
+    public int maxConnector;
+    
+   
+    
+    
 }
